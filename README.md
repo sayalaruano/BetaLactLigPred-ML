@@ -1,6 +1,23 @@
-# **Midterm Project of the Machine Learning ZoomCamp course**
+<h1 align="center">
+    BetaLactLigPred-ML
+</h1>
 
-## **Table of contents:**
+<p align="center">
+  <img src="Img/logo/betalactligpred-logo.svg" width="300" alt="predict-amp-logo"/>
+  <br>
+</p>
+
+<p align="center">
+    <a href="https://github.com/sayalaruano/BetaLactLigPred-ML/blob/main/LICENSE.md">
+        <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+    </a>
+</p>
+
+<p align="center">
+   Prediction of the activity of molecules/ligands that have been tested to bind or not bind to Beta-Lactamases using machine learning classifiers. It was my midterm project of the Machine Learning ZoomCamp Course.
+</p>
+
+## Table of contents:
 
 - [About the project](#about-the-project)
 - [Dataset](#dataset)
@@ -13,13 +30,13 @@
 - [How to contribute with the Open Bioinformatics Research Project?](#how-to-contribute-with-the-open-bioinformatics-research-project)
 - [Contact](#contact)
 
-## **About the project**
+## About the project
 
 For my midterm project of the [Machine Learning Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp), I decided to work in the Open Bioinformatics Research Project proposed by [Data Professor](https://github.com/dataprofessor), which is related to Computational Drug Discovery.
 
 This project aims to evaluate the activity of molecules that have been experimentally tested to bind or not bind to [Beta-Lactamases](https://en.wikipedia.org/wiki/Beta-lactamase). Some of these proteins allow multi-drug resistant bacteria or superbugs to inactivate a wide range of penicillin-like antibiotics, which is known as antimicrobial resistance (AMR). According to the World Health Organization, AMR is one of the [top ten global public health threats facing humanity in this century](https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance), so it is important to search for potential compounds that combat these superbugs and prevent AMR, which is the aim of this project. You can find detailed information about AMR and Beta-Lactamase in this [blog](https://pdb101.rcsb.org/motm/187).
 
-## **Dataset**
+## Dataset
 
 The [dataset](https://www.kaggle.com/thedataprof/betalactamase) consists of 136 csv files with information of interactions between small molecules and Beta-Lactamases. These features are listed below:
 
@@ -33,7 +50,7 @@ The [dataset](https://www.kaggle.com/thedataprof/betalactamase) consists of 136 
 * `target_pref_name:` name of protein tested to interact with the molecule.
 * `bao_label:` bioactivity experiment standard label.
 
-## **Data preparation and feature matrix**
+## Data preparation and feature matrix
 
 The feature matrix to train machine learning models was obtained by calculating molecular descriptors from the `canonical_smiles` of molecules. These molecular descriptors are also known as molecular fingerprints, and they are property profiles of molecules, represented as vectors with each vector element representing the existence or the frequency of a structural feature. The extraction of molecular fingerprints from SMILES was performed with [PaDEL](http://www.yapcwsoft.com/dd/padeldescriptor/) software, following instructions from [this video](https://youtu.be/rEmDyZHz5U8).
 
@@ -41,11 +58,11 @@ PaDEL has 12 available fingerprints, but for this project, we calculated 10 of t
 
 In addition, it is important to notice that this dataset contains interaction data of molecules with various Beta-lactamases. Therefore, we can create independent machine learning models for each of these proteins, or a single unified model for all of them, which is known as the proteochemometric model. In this project, I created independent models for **Beta-lactamase AmpC**.
 
-## **Machine Learning Models**
+## Machine Learning Models
 
 For this project, I tested three machine learning models, including Logistic Regression, Random Forest, and XGBoost, for a binary classification task. I chose `pchembl_value` as the target variable. To fine-tune hyperparameters, I used sklearn class [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV).
 
-## **Python virtual environment and installation of required libraries**
+## Python virtual environment and installation of required libraries
 
 I used [Pipenv](https://pypi.org/project/pipenv/) to create a Python virtual environment, which allows to manage python libraries and their dependencies. Each Pipenv virtual environment has a `Pipfile` with the names and versions of packages installed in the virtual environment, and a `Pipfile.lock`, a json file that contains versions of packages, and dependencies required for each package.
 
@@ -66,7 +83,7 @@ You can find a detailed guide of how to use pipenv [here](https://realpython.com
 
 However, you do not need to run these commands because I created a Dockerfile that installs all Operative System and Python requirements, as is explained in the next section.
 
-## **How to run this app as a web service in a local server?**
+## How to run this app as a web service in a local server?
 
 [Docker](https://www.docker.com/) allows to create **containers**, which are isolated environments with specific system requirements such as OS, libraries, programs, dependencies, among others. You can follow [instructions of the official documentation](https://docs.docker.com/engine/install/) to install this program, depending on your OS and other details.
 
@@ -100,7 +117,7 @@ Then, you should open other terminal and run the `predict-test.py` python script
 
 If you want to make predictions on other molecules, replace the `canonical_smile` variable of the `predict-test.py` python script with the corresponding SMILE.
 
-## **How to run this app as a web service in the cloud?**
+## How to run this app as a web service in the cloud?
 
 I used [Heroku](https://www.heroku.com/home) for hosting the web service in the cloud. For doing the deployment into the cloud, I followed [a tutorial](https://github.com/nindate/ml-zoomcamp-exercises/blob/main/how-to-use-heroku.md) provided by one of the members of the Machine Learning Zoomcamp, which has details and code required to deploy a web service to the cloud with Heroku.
 
@@ -114,7 +131,7 @@ If you want to try this option, you can replace the `url` variable of the `predi
 
 Then, you need to run the python script in a terminal as in the last section, and you should obtain the same output without running the docker container locally.
 
-## **Structure of the repository**
+## Structure of the repository
 
 The main files and directories of this repository are:
 
@@ -133,10 +150,10 @@ The main files and directories of this repository are:
 |[Output/](Output/)|Folder to save performance metrics' results of machine learning models|
 |[Img/](Img/)|Folder to save images|
 
-## **How to contribute with the Open Bioinformatics Research Project?**
+## How to contribute with the Open Bioinformatics Research Project?
 
 More information about this project and how to contribute to it in this [video](https://youtu.be/_GtEgiWWyK4).
 
-## **Contact**
+## Contact
 
 If you have comments or suggestions about this project, you can [open an issue](https://github.com/sayalaruano/MidtermProject-MLZoomCamp/issues/new) in this repository, or email me at sebasar1245@gamil.com.
