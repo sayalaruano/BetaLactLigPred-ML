@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 
 # Parameters 
-url = 'http://localhost:9696/predict'
+url = 'https://betalactamase-drug-discovery.herokuapp.com/predict'
 
 molecule_id = 'CHEMBL179612'
 
